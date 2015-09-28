@@ -1,0 +1,190 @@
+require "uri"
+
+module DwollaSwagger
+  class WebhooksApi
+    basePath = "https://localhost/"
+    # apiInvoker = APIInvoker
+    @auth_names = ['oauth2']
+  
+
+    # Get webhooks by subscription id.
+    # 
+    # @param id ID of webhook to get.
+    # @param [Hash] opts the optional parameters
+    # @option opts [int] :limit How many results to return.
+    # @option opts [int] :offset How many results to skip.
+    # @return [WebhookEventListResponse]
+    def self.hooks_by_id(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling hooks_by_id" if id.nil?
+      
+
+      # resource path
+      path = "/webhook-subscriptions/{id}/webhooks".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
+      query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+
+      if :GET == :POST
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
+        response['Location']
+      else
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
+        obj = WebhookEventListResponse.new() and obj.build_from_hash(response)
+      end
+    end
+
+    # Get a webhook by id.
+    # 
+    # @param id ID of webhook to get.
+    # @param [Hash] opts the optional parameters
+    # @return [Webhook]
+    def self.id(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling id" if id.nil?
+      
+
+      # resource path
+      path = "/webhooks/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+
+      if :GET == :POST
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
+        response['Location']
+      else
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
+        obj = Webhook.new() and obj.build_from_hash(response)
+      end
+    end
+
+    # Get retries requested by webhook id.
+    # 
+    # @param id ID of webhook to get retries for.
+    # @param [Hash] opts the optional parameters
+    # @return [WebhookRetryRequestListResponse]
+    def self.retries_by_id(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling retries_by_id" if id.nil?
+      
+
+      # resource path
+      path = "/webhooks/{id}/retries".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+
+      if :GET == :POST
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
+        response['Location']
+      else
+        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
+        obj = WebhookRetryRequestListResponse.new() and obj.build_from_hash(response)
+      end
+    end
+
+    # Retry a webhook by id.
+    # 
+    # @param id ID of webhook to retry.
+    # @param [Hash] opts the optional parameters
+    # @return [WebhookRetry]
+    def self.retry_webhook(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling retry_webhook" if id.nil?
+      
+
+      # resource path
+      path = "/webhooks/{id}/retries".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+
+      if :POST == :POST
+        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
+        response['Location']
+      else
+        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
+        obj = WebhookRetry.new() and obj.build_from_hash(response)
+      end
+    end
+  end
+end
