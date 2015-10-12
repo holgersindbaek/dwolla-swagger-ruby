@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class FundingSource < BaseObject
-    attr_accessor :_links, :_embedded, :id, :account_id, :status, :type, :name, :created
+    attr_accessor :_links, :_embedded, :id, :status, :type, :name, :created, :balance
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -16,9 +16,6 @@ module DwollaSwagger
         :'id' => :'id',
         
         # 
-        :'account_id' => :'accountId',
-        
-        # 
         :'status' => :'status',
         
         # 
@@ -28,7 +25,10 @@ module DwollaSwagger
         :'name' => :'name',
         
         # 
-        :'created' => :'created'
+        :'created' => :'created',
+        
+        # 
+        :'balance' => :'balance'
         
       }
     end
@@ -39,11 +39,11 @@ module DwollaSwagger
         :'_links' => :'map[string,HalLink]',
         :'_embedded' => :'array[map[string,object]]',
         :'id' => :'string',
-        :'account_id' => :'string',
         :'status' => :'string',
         :'type' => :'string',
         :'name' => :'string',
-        :'created' => :'DateTime'
+        :'created' => :'DateTime',
+        :'balance' => :'object'
         
       }
     end
@@ -71,10 +71,6 @@ module DwollaSwagger
         @id = attributes[:'id']
       end
       
-      if attributes[:'accountId']
-        @account_id = attributes[:'accountId']
-      end
-      
       if attributes[:'status']
         @status = attributes[:'status']
       end
@@ -89,6 +85,10 @@ module DwollaSwagger
       
       if attributes[:'created']
         @created = attributes[:'created']
+      end
+      
+      if attributes[:'balance']
+        @balance = attributes[:'balance']
       end
       
     end

@@ -1,6 +1,6 @@
 module DwollaSwagger
   # 
-  class CreateCustomer < BaseObject
+  class UpdateCustomer < BaseObject
     attr_accessor :first_name, :last_name, :email, :ip_address, :type, :address1, :address2, :city, :state, :postal_code, :date_of_birth, :ssn, :phone
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
