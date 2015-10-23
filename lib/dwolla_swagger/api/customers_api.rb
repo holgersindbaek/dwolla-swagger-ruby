@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 module DwollaSwagger
   class CustomersApi
@@ -18,6 +18,8 @@ module DwollaSwagger
 
       # resource path
       path = "/customers".sub('{format}','json')
+
+      
 
       # query parameters
       query_params = {}
@@ -42,13 +44,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = CustomerListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = CustomerListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Create a new customer.
@@ -61,6 +60,8 @@ module DwollaSwagger
 
       # resource path
       path = "/customers".sub('{format}','json')
+
+      
 
       # query parameters
       query_params = {}
@@ -83,13 +84,10 @@ module DwollaSwagger
       post_body = Swagger::Request.object_to_http_body(opts[:'body'])
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = Unit.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = Unit.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get a customer by id
@@ -104,7 +102,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/customers/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/customers/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -127,13 +130,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = Customer.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = Customer.new() and obj.build_from_hash(response.body))
+
     end
 
     # Update customer record. Personal customer records are re-verified upon update.
@@ -149,7 +149,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/customers/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/customers/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -172,13 +177,10 @@ module DwollaSwagger
       post_body = Swagger::Request.object_to_http_body(opts[:'body'])
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = Customer.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = Customer.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get documents uploaded for customer.
@@ -193,7 +195,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/customers/{id}/documents".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/customers/{id}/documents".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -216,13 +223,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = DocumentListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = DocumentListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Upload a verification document.
@@ -234,6 +238,8 @@ module DwollaSwagger
 
       # resource path
       path = "/customers/{id}/documents".sub('{format}','json')
+
+      
 
       # query parameters
       query_params = {}
@@ -256,13 +262,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = Unit.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = Unit.new() and obj.build_from_hash(response.body))
+
     end
   end
 end

@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 module DwollaSwagger
   class WebhooksApi
@@ -21,7 +21,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhook-subscriptions/{id}/webhooks".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhook-subscriptions/{id}/webhooks".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -46,13 +51,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookEventListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookEventListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get a webhook by id.
@@ -67,7 +69,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhooks/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhooks/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -90,13 +97,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = Webhook.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = Webhook.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get retries requested by webhook id.
@@ -111,7 +115,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhooks/{id}/retries".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhooks/{id}/retries".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -134,13 +143,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookRetryRequestListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookRetryRequestListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Retry a webhook by id.
@@ -155,7 +161,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhooks/{id}/retries".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhooks/{id}/retries".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -178,13 +189,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookRetry.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookRetry.new() and obj.build_from_hash(response.body))
+
     end
   end
 end

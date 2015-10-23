@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class UpdateCustomer < BaseObject
-    attr_accessor :first_name, :last_name, :email, :ip_address, :type, :address1, :address2, :city, :state, :postal_code, :date_of_birth, :ssn, :phone
+    attr_accessor :first_name, :last_name, :email, :ip_address, :type, :status, :address1, :address2, :city, :state, :postal_code, :date_of_birth, :ssn, :phone
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -20,6 +20,9 @@ module DwollaSwagger
         
         # 
         :'type' => :'type',
+        
+        # 
+        :'status' => :'status',
         
         # 
         :'address1' => :'address1',
@@ -56,6 +59,7 @@ module DwollaSwagger
         :'email' => :'string',
         :'ip_address' => :'string',
         :'type' => :'string',
+        :'status' => :'string',
         :'address1' => :'string',
         :'address2' => :'string',
         :'city' => :'string',
@@ -93,6 +97,10 @@ module DwollaSwagger
       
       if attributes[:'type']
         @type = attributes[:'type']
+      end
+      
+      if attributes[:'status']
+        @status = attributes[:'status']
       end
       
       if attributes[:'address1']

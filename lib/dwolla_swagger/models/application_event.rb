@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class ApplicationEvent < BaseObject
-    attr_accessor :_links, :_embedded, :id, :created, :account_id, :topic, :resource_id
+    attr_accessor :_links, :_embedded, :id, :created, :topic, :resource_id
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -19,9 +19,6 @@ module DwollaSwagger
         :'created' => :'created',
         
         # 
-        :'account_id' => :'accountId',
-        
-        # 
         :'topic' => :'topic',
         
         # 
@@ -37,7 +34,6 @@ module DwollaSwagger
         :'_embedded' => :'object',
         :'id' => :'string',
         :'created' => :'DateTime',
-        :'account_id' => :'string',
         :'topic' => :'string',
         :'resource_id' => :'string'
         
@@ -67,10 +63,6 @@ module DwollaSwagger
       
       if attributes[:'created']
         @created = attributes[:'created']
-      end
-      
-      if attributes[:'accountId']
-        @account_id = attributes[:'accountId']
       end
       
       if attributes[:'topic']

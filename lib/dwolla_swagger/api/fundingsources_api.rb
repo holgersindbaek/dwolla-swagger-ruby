@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 module DwollaSwagger
   class FundingsourcesApi
@@ -19,7 +19,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/accounts/{id}/funding-sources".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/accounts/{id}/funding-sources".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -42,13 +47,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = FundingSourceListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSourceListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get a customer&#39;s funding sources.
@@ -63,7 +65,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/customers/{id}/funding-sources".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/customers/{id}/funding-sources".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -86,13 +93,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = FundingSourceListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSourceListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Create a new funding source.
@@ -108,7 +112,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/customers/{id}/funding-sources".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/customers/{id}/funding-sources".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -131,13 +140,10 @@ module DwollaSwagger
       post_body = Swagger::Request.object_to_http_body(opts[:'body'])
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = FundingSource.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSource.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get a funding source by id.
@@ -152,7 +158,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/funding-sources/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/funding-sources/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -175,13 +186,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = FundingSource.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSource.new() and obj.build_from_hash(response.body))
+
     end
 
     # Delete a funding source by id.
@@ -196,7 +204,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/funding-sources/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/funding-sources/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -219,13 +232,99 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :DELETE == :POST
-        response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = FundingSource.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSource.new() and obj.build_from_hash(response.body))
+
+    end
+
+    # Verify pending verifications exist.
+    # 
+    # @param id Funding source ID to check for pending validation deposits for.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def self.verify_micro_deposits_exist(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling verify_micro_deposits_exist" if id.nil?
+      
+
+      # resource path
+      path = "/funding-sources/{id}/micro-deposits".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      
+
+      nil
+
+    end
+
+    # Initiate or verify micro deposits for bank verification.
+    # 
+    # @param id Funding source ID to initiate or verify micro deposits for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [VerifyMicroDepositsRequest] :body Optional micro deposit amounts for verification
+    # @return [nil]
+    def self.micro_deposits(id, opts = {})
+      
+      # verify the required parameter 'id' is set
+      raise "Missing the required parameter 'id' when calling micro_deposits" if id.nil?
+      
+
+      # resource path
+      path = "/funding-sources/{id}/micro-deposits".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = []
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = Swagger::Request.object_to_http_body(opts[:'body'])
+      
+
+      nil
+
     end
   end
 end

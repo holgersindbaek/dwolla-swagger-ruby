@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 module DwollaSwagger
   class WebhooksubscriptionsApi
@@ -16,6 +16,8 @@ module DwollaSwagger
 
       # resource path
       path = "/webhook-subscriptions".sub('{format}','json')
+
+      
 
       # query parameters
       query_params = {}
@@ -38,13 +40,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookListResponse.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookListResponse.new() and obj.build_from_hash(response.body))
+
     end
 
     # Create a new webhook subscription.
@@ -57,6 +56,8 @@ module DwollaSwagger
 
       # resource path
       path = "/webhook-subscriptions".sub('{format}','json')
+
+      
 
       # query parameters
       query_params = {}
@@ -79,13 +80,10 @@ module DwollaSwagger
       post_body = Swagger::Request.object_to_http_body(opts[:'body'])
       
 
-      if :POST == :POST
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookSubscription.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookSubscription.new() and obj.build_from_hash(response.body))
+
     end
 
     # Get a webhook subscription by id.
@@ -100,7 +98,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhook-subscriptions/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhook-subscriptions/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -123,13 +126,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :GET == :POST
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookSubscription.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookSubscription.new() and obj.build_from_hash(response.body))
+
     end
 
     # Delete a webhook subscription by id.
@@ -144,7 +144,12 @@ module DwollaSwagger
       
 
       # resource path
-      path = "/webhook-subscriptions/{id}".sub('{format}','json').sub('{' + 'id' + '}', id.to_s)
+      path = "/webhook-subscriptions/{id}".sub('{format}','json')
+
+      
+      # check if id parameter is resource URI, otherwise substitute for ID
+      path = id =~ URI::regexp ? path.sub('{' + 'id' + '}', id.split('/')[-1].to_s) : path.sub('{' + 'id' + '}', id.to_s)
+      
 
       # query parameters
       query_params = {}
@@ -167,13 +172,10 @@ module DwollaSwagger
       post_body = nil
       
 
-      if :DELETE == :POST
-        response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.headers
-        response['Location']
-      else
-        response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make.body
-        obj = WebhookSubscription.new() and obj.build_from_hash(response)
-      end
+      response = Swagger::Request.new(:DELETE, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = WebhookSubscription.new() and obj.build_from_hash(response.body))
+
     end
   end
 end

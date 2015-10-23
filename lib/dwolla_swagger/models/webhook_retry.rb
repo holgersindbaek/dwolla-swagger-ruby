@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class WebhookRetry < BaseObject
-    attr_accessor :_links, :_embedded, :id, :time_stamp, :hook_id
+    attr_accessor :_links, :_embedded, :id, :timestamp
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -16,10 +16,7 @@ module DwollaSwagger
         :'id' => :'id',
         
         # 
-        :'time_stamp' => :'timeStamp',
-        
-        # 
-        :'hook_id' => :'hookId'
+        :'timestamp' => :'timestamp'
         
       }
     end
@@ -30,8 +27,7 @@ module DwollaSwagger
         :'_links' => :'map[string,HalLink]',
         :'_embedded' => :'object',
         :'id' => :'string',
-        :'time_stamp' => :'DateTime',
-        :'hook_id' => :'string'
+        :'timestamp' => :'DateTime'
         
       }
     end
@@ -57,12 +53,8 @@ module DwollaSwagger
         @id = attributes[:'id']
       end
       
-      if attributes[:'timeStamp']
-        @time_stamp = attributes[:'timeStamp']
-      end
-      
-      if attributes[:'hookId']
-        @hook_id = attributes[:'hookId']
+      if attributes[:'timestamp']
+        @timestamp = attributes[:'timestamp']
       end
       
     end
