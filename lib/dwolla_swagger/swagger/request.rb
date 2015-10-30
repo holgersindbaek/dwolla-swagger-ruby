@@ -37,7 +37,7 @@ module DwollaSwagger
           case auth_name
           when 'oauth2'
             
-            @headers.merge!({:Authorization => "Bearer #{Swagger.configuration.auth_token}"})
+            @headers.merge!({:Authorization => "Bearer #{Swagger.configuration.access_token}"})
           
           end
         end
