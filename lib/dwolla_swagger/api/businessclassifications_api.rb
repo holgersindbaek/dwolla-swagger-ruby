@@ -50,7 +50,7 @@ module DwollaSwagger
     # 
     # @param id Id of business classification to get.
     # @param [Hash] opts the optional parameters
-    # @return [Customer]
+    # @return [BusinessClassification]
     def self.get_business_classification(id, opts = {})
       
       # verify the required parameter 'id' is set
@@ -88,7 +88,7 @@ module DwollaSwagger
 
       response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
 
-      response.code == 201 ? obj = response.headers['Location'] : (obj = Customer.new() and obj.build_from_hash(response.body))
+      response.code == 201 ? obj = response.headers['Location'] : (obj = BusinessClassification.new() and obj.build_from_hash(response.body))
 
     end
   end
