@@ -65,7 +65,7 @@ module DwollaSwagger
       header_params = {}
 
       # HTTP header 'Accept' (if needed)
-      _header_accept = ['application/json']
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
       _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
 
       # HTTP header 'Content-Type'

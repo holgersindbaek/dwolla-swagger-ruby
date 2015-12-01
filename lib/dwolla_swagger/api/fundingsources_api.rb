@@ -146,6 +146,46 @@ module DwollaSwagger
 
     end
 
+    # Create a new funding source.
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [CreateFundingSourceRequest] :body Funding source to create.
+    # @return [FundingSource]
+    def self.create_funding_source(opts = {})
+      
+
+      # resource path
+      path = "/funding-sources".sub('{format}','json')
+
+      
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/vnd.dwolla.v1.hal+json']
+      _header_accept_result = Swagger::Request.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/vnd.dwolla.v1.hal+json']
+      header_params['Content-Type'] = Swagger::Request.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = Swagger::Request.object_to_http_body(opts[:'body'])
+      
+
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
+
+      response.code == 201 ? obj = response.headers['Location'] : (obj = FundingSource.new() and obj.build_from_hash(response.body))
+
+    end
+
     # Get a funding source by id.
     # 
     # @param id Funding source ID to get.

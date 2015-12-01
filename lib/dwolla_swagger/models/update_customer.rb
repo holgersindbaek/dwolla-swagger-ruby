@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class UpdateCustomer < BaseObject
-    attr_accessor :first_name, :last_name, :email, :ip_address, :type, :status, :address1, :address2, :city, :state, :postal_code, :date_of_birth, :ssn, :phone
+    attr_accessor :first_name, :last_name, :email, :ip_address, :type, :status, :address1, :address2, :city, :state, :postal_code, :date_of_birth, :ssn, :phone, :business_name, :business_type, :business_classification, :ein, :doing_business_as, :website
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -46,7 +46,25 @@ module DwollaSwagger
         :'ssn' => :'ssn',
         
         # 
-        :'phone' => :'phone'
+        :'phone' => :'phone',
+        
+        # 
+        :'business_name' => :'businessName',
+        
+        # 
+        :'business_type' => :'businessType',
+        
+        # 
+        :'business_classification' => :'businessClassification',
+        
+        # 
+        :'ein' => :'ein',
+        
+        # 
+        :'doing_business_as' => :'doingBusinessAs',
+        
+        # 
+        :'website' => :'website'
         
       }
     end
@@ -67,7 +85,13 @@ module DwollaSwagger
         :'postal_code' => :'string',
         :'date_of_birth' => :'string',
         :'ssn' => :'string',
-        :'phone' => :'string'
+        :'phone' => :'string',
+        :'business_name' => :'string',
+        :'business_type' => :'string',
+        :'business_classification' => :'string',
+        :'ein' => :'string',
+        :'doing_business_as' => :'string',
+        :'website' => :'string'
         
       }
     end
@@ -133,6 +157,30 @@ module DwollaSwagger
       
       if attributes[:'phone']
         @phone = attributes[:'phone']
+      end
+      
+      if attributes[:'businessName']
+        @business_name = attributes[:'businessName']
+      end
+      
+      if attributes[:'businessType']
+        @business_type = attributes[:'businessType']
+      end
+      
+      if attributes[:'businessClassification']
+        @business_classification = attributes[:'businessClassification']
+      end
+      
+      if attributes[:'ein']
+        @ein = attributes[:'ein']
+      end
+      
+      if attributes[:'doingBusinessAs']
+        @doing_business_as = attributes[:'doingBusinessAs']
+      end
+      
+      if attributes[:'website']
+        @website = attributes[:'website']
       end
       
     end
