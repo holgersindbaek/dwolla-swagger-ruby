@@ -273,14 +273,14 @@ module DwollaSwagger
     # @param id ID of customer.
     # @param [Hash] opts the optional parameters
     # @return [CustomerOAuthToken]
-    def self.create_add_bank_token_for_customer(id, opts = {})
+    def self.create_funding_sources_token_for_customer(id, opts = {})
       
       # verify the required parameter 'id' is set
-      raise "Missing the required parameter 'id' when calling create_add_bank_token_for_customer" if id.nil?
+      raise "Missing the required parameter 'id' when calling create_funding_sources_token_for_customer" if id.nil?
       
 
       # resource path
-      path = "/customers/{id}/financial-institution-token".sub('{format}','json')
+      path = "/customers/{id}/funding-sources-token".sub('{format}','json')
 
       
       # check if id parameter is resource URI, otherwise substitute for ID

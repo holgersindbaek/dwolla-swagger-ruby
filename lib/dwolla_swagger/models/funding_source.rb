@@ -37,7 +37,7 @@ module DwollaSwagger
     def self.swagger_types
       {
         :'_links' => :'map[string,HalLink]',
-        :'_embedded' => :'array[map[string,object]]',
+        :'_embedded' => :'object',
         :'id' => :'string',
         :'status' => :'string',
         :'type' => :'string',
@@ -62,9 +62,7 @@ module DwollaSwagger
       end
       
       if attributes[:'_embedded']
-        if (value = attributes[:'_embedded']).is_a?(Array)
-          @_embedded = value
-        end
+        @_embedded = attributes[:'_embedded']
       end
       
       if attributes[:'id']
