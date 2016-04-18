@@ -1,3 +1,6 @@
+# to ensure DateTime is loaded
+require 'date'
+
 # Swagger common files
 require 'dwolla_swagger/monkey'
 require 'dwolla_swagger/swagger'
