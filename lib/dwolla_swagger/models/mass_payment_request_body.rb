@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class TransferRequestBody < BaseObject
-    attr_accessor :_links, :amount, :metadata, :fees
+  class MassPaymentRequestBody < BaseObject
+    attr_accessor :_links, :items, :metadata
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -10,13 +10,10 @@ module DwollaSwagger
         :'_links' => :'_links',
         
         # 
-        :'amount' => :'amount',
+        :'items' => :'items',
         
         # 
-        :'metadata' => :'metadata',
-        
-        # 
-        :'fees' => :'fees'
+        :'metadata' => :'metadata'
         
       }
     end
@@ -24,10 +21,9 @@ module DwollaSwagger
     # attribute type
     def self.swagger_types
       {
-        :'_links' => :'map[string,HalLink]',
-        :'amount' => :'Amount',
-        :'metadata' => :'object',
-        :'fees' => :'array[FacilitatorFeeRequest]'
+        :'_links' => :'object',
+        :'items' => :'array[MassPaymentItemRequestBody]',
+        :'metadata' => :'object'
         
       }
     end
@@ -40,23 +36,17 @@ module DwollaSwagger
 
       
       if attributes[:'_links']
-        if (value = attributes[:'_links']).is_a?(Array)
-          @_links = value
-        end
+        @_links = attributes[:'_links']
       end
       
-      if attributes[:'amount']
-        @amount = attributes[:'amount']
+      if attributes[:'items']
+        if (value = attributes[:'items']).is_a?(Array)
+          @items = value
+        end
       end
       
       if attributes[:'metadata']
         @metadata = attributes[:'metadata']
-      end
-      
-      if attributes[:'fees']
-        if (value = attributes[:'fees']).is_a?(Array)
-          @fees = value
-        end
       end
       
     end

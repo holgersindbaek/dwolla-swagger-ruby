@@ -12,6 +12,7 @@ module DwollaSwagger
     # @param [Hash] opts the optional parameters
     # @option opts [int] :limit How many results to return.
     # @option opts [int] :offset How many results to skip.
+    # @option opts [string] :search Search term.
     # @return [CustomerListResponse]
     def self.list(opts = {})
       
@@ -25,6 +26,7 @@ module DwollaSwagger
       query_params = {}
       query_params[:'limit'] = opts[:'limit'] if opts[:'limit']
       query_params[:'offset'] = opts[:'offset'] if opts[:'offset']
+      query_params[:'search'] = opts[:'search'] if opts[:'search']
 
       # header parameters
       header_params = {}

@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class TransferRequestBody < BaseObject
-    attr_accessor :_links, :amount, :metadata, :fees
+  class FundingSourceBalance < BaseObject
+    attr_accessor :_links, :_embedded, :balance, :last_updated
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -10,13 +10,13 @@ module DwollaSwagger
         :'_links' => :'_links',
         
         # 
-        :'amount' => :'amount',
+        :'_embedded' => :'_embedded',
         
         # 
-        :'metadata' => :'metadata',
+        :'balance' => :'balance',
         
         # 
-        :'fees' => :'fees'
+        :'last_updated' => :'lastUpdated'
         
       }
     end
@@ -25,9 +25,9 @@ module DwollaSwagger
     def self.swagger_types
       {
         :'_links' => :'map[string,HalLink]',
-        :'amount' => :'Amount',
-        :'metadata' => :'object',
-        :'fees' => :'array[FacilitatorFeeRequest]'
+        :'_embedded' => :'object',
+        :'balance' => :'object',
+        :'last_updated' => :'DateTime'
         
       }
     end
@@ -45,18 +45,16 @@ module DwollaSwagger
         end
       end
       
-      if attributes[:'amount']
-        @amount = attributes[:'amount']
+      if attributes[:'_embedded']
+        @_embedded = attributes[:'_embedded']
       end
       
-      if attributes[:'metadata']
-        @metadata = attributes[:'metadata']
+      if attributes[:'balance']
+        @balance = attributes[:'balance']
       end
       
-      if attributes[:'fees']
-        if (value = attributes[:'fees']).is_a?(Array)
-          @fees = value
-        end
+      if attributes[:'lastUpdated']
+        @last_updated = attributes[:'lastUpdated']
       end
       
     end

@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class Document < BaseObject
-    attr_accessor :_links, :id, :status, :type, :created, :failure_reason, :_embedded
+  class MassPayment < BaseObject
+    attr_accessor :_links, :_embedded, :id, :status, :created, :metadata
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -10,22 +10,19 @@ module DwollaSwagger
         :'_links' => :'_links',
         
         # 
+        :'_embedded' => :'_embedded',
+        
+        # 
         :'id' => :'id',
         
         # 
         :'status' => :'status',
         
         # 
-        :'type' => :'type',
-        
-        # 
         :'created' => :'created',
         
         # 
-        :'failure_reason' => :'failureReason',
-        
-        # 
-        :'_embedded' => :'_embedded'
+        :'metadata' => :'metadata'
         
       }
     end
@@ -33,13 +30,12 @@ module DwollaSwagger
     # attribute type
     def self.swagger_types
       {
-        :'_links' => :'map[string,HalLink]',
+        :'_links' => :'object',
+        :'_embedded' => :'object',
         :'id' => :'string',
         :'status' => :'string',
-        :'type' => :'string',
-        :'created' => :'DateTime',
-        :'failure_reason' => :'string',
-        :'_embedded' => :'object'
+        :'created' => :'string',
+        :'metadata' => :'object'
         
       }
     end
@@ -52,9 +48,11 @@ module DwollaSwagger
 
       
       if attributes[:'_links']
-        if (value = attributes[:'_links']).is_a?(Array)
-          @_links = value
-        end
+        @_links = attributes[:'_links']
+      end
+      
+      if attributes[:'_embedded']
+        @_embedded = attributes[:'_embedded']
       end
       
       if attributes[:'id']
@@ -65,20 +63,12 @@ module DwollaSwagger
         @status = attributes[:'status']
       end
       
-      if attributes[:'type']
-        @type = attributes[:'type']
-      end
-      
       if attributes[:'created']
         @created = attributes[:'created']
       end
       
-      if attributes[:'failureReason']
-        @failure_reason = attributes[:'failureReason']
-      end
-      
-      if attributes[:'_embedded']
-        @_embedded = attributes[:'_embedded']
+      if attributes[:'metadata']
+        @metadata = attributes[:'metadata']
       end
       
     end

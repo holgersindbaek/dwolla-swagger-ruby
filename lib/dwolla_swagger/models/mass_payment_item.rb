@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class TransferRequestBody < BaseObject
-    attr_accessor :_links, :amount, :metadata, :fees
+  class MassPaymentItem < BaseObject
+    attr_accessor :_links, :_embedded, :id, :status, :amount, :metadata
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -10,13 +10,19 @@ module DwollaSwagger
         :'_links' => :'_links',
         
         # 
+        :'_embedded' => :'_embedded',
+        
+        # 
+        :'id' => :'id',
+        
+        # 
+        :'status' => :'status',
+        
+        # 
         :'amount' => :'amount',
         
         # 
-        :'metadata' => :'metadata',
-        
-        # 
-        :'fees' => :'fees'
+        :'metadata' => :'metadata'
         
       }
     end
@@ -24,10 +30,12 @@ module DwollaSwagger
     # attribute type
     def self.swagger_types
       {
-        :'_links' => :'map[string,HalLink]',
+        :'_links' => :'object',
+        :'_embedded' => :'object',
+        :'id' => :'string',
+        :'status' => :'string',
         :'amount' => :'Amount',
-        :'metadata' => :'object',
-        :'fees' => :'array[FacilitatorFeeRequest]'
+        :'metadata' => :'object'
         
       }
     end
@@ -40,9 +48,19 @@ module DwollaSwagger
 
       
       if attributes[:'_links']
-        if (value = attributes[:'_links']).is_a?(Array)
-          @_links = value
-        end
+        @_links = attributes[:'_links']
+      end
+      
+      if attributes[:'_embedded']
+        @_embedded = attributes[:'_embedded']
+      end
+      
+      if attributes[:'id']
+        @id = attributes[:'id']
+      end
+      
+      if attributes[:'status']
+        @status = attributes[:'status']
       end
       
       if attributes[:'amount']
@@ -51,12 +69,6 @@ module DwollaSwagger
       
       if attributes[:'metadata']
         @metadata = attributes[:'metadata']
-      end
-      
-      if attributes[:'fees']
-        if (value = attributes[:'fees']).is_a?(Array)
-          @fees = value
-        end
       end
       
     end
