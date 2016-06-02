@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
   s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
 
+  s.add_development_dependency "bundler", "~> 1.11"
+  s.add_development_dependency "rake", "~> 10.0"
   s.add_development_dependency 'rspec', '~> 3.2', '>= 3.2.0'
   s.add_development_dependency 'vcr', '~> 2.9', '>= 2.9.3'
   s.add_development_dependency 'webmock', '~> 1.6', '>= 1.6.2'
