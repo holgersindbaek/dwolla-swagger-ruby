@@ -38,15 +38,7 @@ module DwollaSwagger
         value.to_i
       when :double
         value.to_f
-      when :boolean
-        if value =~ /^(true|t|yes|y|1)$/i
-          true
-        else
-          false
-        end
-      when :object
-        value
-      when /^map\[(.*)\]/i
+      when :boolean, :object, /^map\[(.*)\]/i
         value
       else # model
         _model = DwollaSwagger.const_get(type).new
