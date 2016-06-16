@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class HalLink < BaseObject
-    attr_accessor :href, :name
+    attr_accessor :href, :type
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -10,7 +10,7 @@ module DwollaSwagger
         :'href' => :'href',
         
         # 
-        :'name' => :'name'
+        :'type' => :'type'
         
       }
     end
@@ -19,7 +19,7 @@ module DwollaSwagger
     def self.swagger_types
       {
         :'href' => :'string',
-        :'name' => :'string'
+        :'type' => :'string'
         
       }
     end
@@ -35,8 +35,8 @@ module DwollaSwagger
         @href = attributes[:'href']
       end
       
-      if attributes[:'name']
-        @name = attributes[:'name']
+      if attributes[:'type']
+        @type = attributes[:'type']
       end
       
     end

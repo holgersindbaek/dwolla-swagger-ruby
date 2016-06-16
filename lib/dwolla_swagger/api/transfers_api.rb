@@ -244,7 +244,7 @@ module DwollaSwagger
     # 
     # @param id ID of failed bank transfer to get.
     # @param [Hash] opts the optional parameters
-    # @return [Transfer]
+    # @return [TransferFailure]
     def self.failure_by_id(id, opts = {})
       
       # verify the required parameter 'id' is set
@@ -282,7 +282,7 @@ module DwollaSwagger
 
       response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
 
-      response.code == 201 ? obj = response.headers['Location'] : (obj = Transfer.new() and obj.build_from_hash(response.body))
+      response.code == 201 ? obj = response.headers['Location'] : (obj = TransferFailure.new() and obj.build_from_hash(response.body))
 
     end
 
