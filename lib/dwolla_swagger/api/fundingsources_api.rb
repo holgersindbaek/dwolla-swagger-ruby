@@ -11,6 +11,7 @@ module DwollaSwagger
     # 
     # @param id Account id to get funding sources for.
     # @param [Hash] opts the optional parameters
+    # @option opts [boolean] :removed Filter funding sources by this value.
     # @return [FundingSourceListResponse]
     def self.get_account_funding_sources(id, opts = {})
       
@@ -28,6 +29,7 @@ module DwollaSwagger
 
       # query parameters
       query_params = {}
+      query_params[:'removed'] = opts[:'removed'] if opts[:'removed']
 
       # header parameters
       header_params = {}
@@ -57,6 +59,7 @@ module DwollaSwagger
     # 
     # @param id Customer id to get funding sources for.
     # @param [Hash] opts the optional parameters
+    # @option opts [boolean] :removed Filter funding sources by this value.
     # @return [FundingSourceListResponse]
     def self.get_customer_funding_sources(id, opts = {})
       
@@ -74,6 +77,7 @@ module DwollaSwagger
 
       # query parameters
       query_params = {}
+      query_params[:'removed'] = opts[:'removed'] if opts[:'removed']
 
       # header parameters
       header_params = {}
