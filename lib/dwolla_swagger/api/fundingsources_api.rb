@@ -29,7 +29,7 @@ module DwollaSwagger
 
       # query parameters
       query_params = {}
-      query_params[:'removed'] = opts[:'removed'] if opts[:'removed']
+      query_params[:'removed'] = opts[:'removed']
 
       # header parameters
       header_params = {}
@@ -77,7 +77,7 @@ module DwollaSwagger
 
       # query parameters
       query_params = {}
-      query_params[:'removed'] = opts[:'removed'] if opts[:'removed']
+      query_params[:'removed'] = opts[:'removed']
 
       # header parameters
       header_params = {}
