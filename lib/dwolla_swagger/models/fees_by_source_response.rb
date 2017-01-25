@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class WebhookSubscription < BaseObject
-    attr_accessor :_links, :_embedded, :id, :url, :paused, :created
+  class FeesBySourceResponse < BaseObject
+    attr_accessor :_links, :_embedded, :transactions, :total
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -13,16 +13,10 @@ module DwollaSwagger
         :'_embedded' => :'_embedded',
         
         # 
-        :'id' => :'id',
+        :'transactions' => :'transactions',
         
         # 
-        :'url' => :'url',
-        
-        # 
-        :'paused' => :'paused',
-        
-        # 
-        :'created' => :'created'
+        :'total' => :'total'
         
       }
     end
@@ -32,10 +26,8 @@ module DwollaSwagger
       {
         :'_links' => :'map[string,HalLink]',
         :'_embedded' => :'object',
-        :'id' => :'string',
-        :'url' => :'string',
-        :'paused' => :'boolean',
-        :'created' => :'DateTime'
+        :'transactions' => :'array[Transfer]',
+        :'total' => :'int'
         
       }
     end
@@ -57,20 +49,14 @@ module DwollaSwagger
         @_embedded = attributes[:'_embedded']
       end
       
-      if attributes[:'id']
-        @id = attributes[:'id']
+      if attributes[:'transactions']
+        if (value = attributes[:'transactions']).is_a?(Array)
+          @transactions = value
+        end
       end
       
-      if attributes[:'url']
-        @url = attributes[:'url']
-      end
-      
-      if attributes[:'paused']
-        @paused = attributes[:'paused']
-      end
-      
-      if attributes[:'created']
-        @created = attributes[:'created']
+      if attributes[:'total']
+        @total = attributes[:'total']
       end
       
     end

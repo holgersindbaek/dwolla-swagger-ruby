@@ -379,7 +379,7 @@ module DwollaSwagger
     # 
     # @param id Funding source ID to check for pending validation deposits for.
     # @param [Hash] opts the optional parameters
-    # @return [MicroDeposits]
+    # @return [MicroDepositsInitiated]
     def self.verify_micro_deposits_exist(id, opts = {})
       
       # verify the required parameter 'id' is set
@@ -417,7 +417,7 @@ module DwollaSwagger
 
       response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => @auth_names}).make
 
-      response.code == 201 ? obj = response.headers['Location'] : (obj = MicroDeposits.new() and obj.build_from_hash(response.body))
+      response.code == 201 ? obj = response.headers['Location'] : (obj = MicroDepositsInitiated.new() and obj.build_from_hash(response.body))
 
     end
 

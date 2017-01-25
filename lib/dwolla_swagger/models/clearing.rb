@@ -1,19 +1,16 @@
 module DwollaSwagger
   # 
-  class HalLink < BaseObject
-    attr_accessor :href, :type, :resource_type
+  class Clearing < BaseObject
+    attr_accessor :source, :destination
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
         
         # 
-        :'href' => :'href',
+        :'source' => :'source',
         
         # 
-        :'type' => :'type',
-        
-        # 
-        :'resource_type' => :'resource-type'
+        :'destination' => :'destination'
         
       }
     end
@@ -21,9 +18,8 @@ module DwollaSwagger
     # attribute type
     def self.swagger_types
       {
-        :'href' => :'string',
-        :'type' => :'string',
-        :'resource_type' => :'string'
+        :'source' => :'string',
+        :'destination' => :'string'
         
       }
     end
@@ -35,16 +31,12 @@ module DwollaSwagger
       attributes = attributes.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
       
-      if attributes[:'href']
-        @href = attributes[:'href']
+      if attributes[:'source']
+        @source = attributes[:'source']
       end
       
-      if attributes[:'type']
-        @type = attributes[:'type']
-      end
-      
-      if attributes[:'resource-type']
-        @resource_type = attributes[:'resource-type']
+      if attributes[:'destination']
+        @destination = attributes[:'destination']
       end
       
     end

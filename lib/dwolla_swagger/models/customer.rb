@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class Customer < BaseObject
-    attr_accessor :_links, :_embedded, :id, :first_name, :last_name, :email, :type, :status, :created, :address1, :address2, :city, :state, :postal_code, :business_name, :doing_business_as
+    attr_accessor :_links, :_embedded, :id, :first_name, :last_name, :email, :type, :status, :created, :address1, :address2, :city, :state, :postal_code, :phone, :business_name, :doing_business_as, :website
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -49,10 +49,16 @@ module DwollaSwagger
         :'postal_code' => :'postalCode',
         
         # 
+        :'phone' => :'phone',
+        
+        # 
         :'business_name' => :'businessName',
         
         # 
-        :'doing_business_as' => :'doingBusinessAs'
+        :'doing_business_as' => :'doingBusinessAs',
+        
+        # 
+        :'website' => :'website'
         
       }
     end
@@ -74,8 +80,10 @@ module DwollaSwagger
         :'city' => :'string',
         :'state' => :'string',
         :'postal_code' => :'string',
+        :'phone' => :'string',
         :'business_name' => :'string',
-        :'doing_business_as' => :'string'
+        :'doing_business_as' => :'string',
+        :'website' => :'string'
         
       }
     end
@@ -145,12 +153,20 @@ module DwollaSwagger
         @postal_code = attributes[:'postalCode']
       end
       
+      if attributes[:'phone']
+        @phone = attributes[:'phone']
+      end
+      
       if attributes[:'businessName']
         @business_name = attributes[:'businessName']
       end
       
       if attributes[:'doingBusinessAs']
         @doing_business_as = attributes[:'doingBusinessAs']
+      end
+      
+      if attributes[:'website']
+        @website = attributes[:'website']
       end
       
     end

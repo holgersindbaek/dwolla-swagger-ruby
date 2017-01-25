@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
   class CreateFundingSourceRequest < BaseObject
-    attr_accessor :_links, :routing_number, :account_number, :type, :name
+    attr_accessor :_links, :routing_number, :account_number, :type, :name, :verified, :channels
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -19,7 +19,13 @@ module DwollaSwagger
         :'type' => :'type',
         
         # 
-        :'name' => :'name'
+        :'name' => :'name',
+        
+        # 
+        :'verified' => :'verified',
+        
+        # 
+        :'channels' => :'channels'
         
       }
     end
@@ -31,7 +37,9 @@ module DwollaSwagger
         :'routing_number' => :'string',
         :'account_number' => :'string',
         :'type' => :'string',
-        :'name' => :'string'
+        :'name' => :'string',
+        :'verified' => :'boolean',
+        :'channels' => :'array[string]'
         
       }
     end
@@ -61,6 +69,16 @@ module DwollaSwagger
       
       if attributes[:'name']
         @name = attributes[:'name']
+      end
+      
+      if attributes[:'verified']
+        @verified = attributes[:'verified']
+      end
+      
+      if attributes[:'channels']
+        if (value = attributes[:'channels']).is_a?(Array)
+          @channels = value
+        end
       end
       
     end

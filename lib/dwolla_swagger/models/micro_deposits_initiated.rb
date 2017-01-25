@@ -1,7 +1,7 @@
 module DwollaSwagger
   # 
-  class Transfer < BaseObject
-    attr_accessor :_links, :_embedded, :id, :status, :amount, :created, :metadata, :clearing
+  class MicroDepositsInitiated < BaseObject
+    attr_accessor :_links, :_embedded, :created, :status, :failure
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -13,22 +13,13 @@ module DwollaSwagger
         :'_embedded' => :'_embedded',
         
         # 
-        :'id' => :'id',
+        :'created' => :'created',
         
         # 
         :'status' => :'status',
         
         # 
-        :'amount' => :'amount',
-        
-        # 
-        :'created' => :'created',
-        
-        # 
-        :'metadata' => :'metadata',
-        
-        # 
-        :'clearing' => :'clearing'
+        :'failure' => :'failure'
         
       }
     end
@@ -38,12 +29,9 @@ module DwollaSwagger
       {
         :'_links' => :'map[string,HalLink]',
         :'_embedded' => :'object',
-        :'id' => :'string',
-        :'status' => :'string',
-        :'amount' => :'Money',
         :'created' => :'DateTime',
-        :'metadata' => :'object',
-        :'clearing' => :'Clearing'
+        :'status' => :'string',
+        :'failure' => :'FailureDetails'
         
       }
     end
@@ -65,28 +53,16 @@ module DwollaSwagger
         @_embedded = attributes[:'_embedded']
       end
       
-      if attributes[:'id']
-        @id = attributes[:'id']
+      if attributes[:'created']
+        @created = attributes[:'created']
       end
       
       if attributes[:'status']
         @status = attributes[:'status']
       end
       
-      if attributes[:'amount']
-        @amount = attributes[:'amount']
-      end
-      
-      if attributes[:'created']
-        @created = attributes[:'created']
-      end
-      
-      if attributes[:'metadata']
-        @metadata = attributes[:'metadata']
-      end
-      
-      if attributes[:'clearing']
-        @clearing = attributes[:'clearing']
+      if attributes[:'failure']
+        @failure = attributes[:'failure']
       end
       
     end
