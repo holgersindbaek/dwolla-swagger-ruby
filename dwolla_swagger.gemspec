@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Dwolla API V2 Swagger SDK wrapper.}
   s.license     = "Apache-2.0"
 
-  s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
+  s.add_runtime_dependency 'typhoeus', '~> 1.0.2'
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
   s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
 
